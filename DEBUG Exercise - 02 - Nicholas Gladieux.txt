@@ -1,0 +1,54 @@
+Debugging Exercise (Corrected):
+
+// This pseudocode is intended to display employee net pay values.
+// All employees have a standard $45 deduction from their checks.
+// If an employee does not earn enough to cover the deduction
+// an error message is displayed.
+start
+   Declarations
+      string name
+      num hours
+      num rate
+      num DEDUCTION = 45
+      string EOFNAME = "ZZZ"
+      num gross
+      num net
+   output "Enter first name or ", EOFNAME, " to quit"
+   input name
+   while name <> EOFNAME
+      output "Enter hours worked for ", name
+      input hours
+      output "Enter hourly rate for ", name
+      input rate
+      gross = hours * rate
+      net = gross - DEDUCTION
+      if net > 0 then
+         output "Net pay for ", name, " is ", net
+      else
+         output "Deductions not covered. Net is 0."
+      endif
+      output "Enter next name or ", EOFNAME, " to quit"
+      input name
+   endwhile
+   output "End of job"
+stop
+
+Corrections Made:
+1. Changed "string DEDUCTION = 45" to "num DEDUCTION = 45". DEDUCTION is subtracted from gross, so it must be a number, not a string.
+2. Changed "if name not equal to EOFNAME" to "while name <> EOFNAME". The program needs to repeat for each employee until the user enters ZZZ, so this must be a loop, not a one-time if statement.
+3. Changed "while net > 0 then ... endwhile" to "if net > 0 then ... endif". This is a one-time decision with an else branch, so it must be an if statement. A while loop here would repeat forever because net never changes inside it.
+4. Changed the closing "endif" at the end of the main loop to "endwhile" to match the new while loop.
+5. Fixed the indentation on the "Deductions not covered" output line so it lines up with the other statement inside the if-else.
+
+Test 1: name = Sam, hours = 40, rate = 15
+gross = 40 * 15 = 600
+net = 600 - 45 = 555
+555 > 0, so the output is "Net pay for Sam is 555"
+
+Test 2: name = Ann, hours = 2, rate = 10
+gross = 2 * 10 = 20
+net = 20 - 45 = -25
+-25 is not > 0, so the output is "Deductions not covered. Net is 0."
+
+Test 3: name = ZZZ
+The loop ends and the output is "End of job"

@@ -1,0 +1,44 @@
+Question: You have been tasked with reviewing and updating this program. What steps would you take to identify any issues in the code?
+First, I would review the declarations and make sure every variable used in the program is declared and spelled the same way everywhere. Next, I would read through the code line by line and check the spelling of keywords like input and output. Then I would desk-check the program by walking through it with sample test values (for example, 100 and 80) to see if the output matches what I expect. I would also check that every output prompt is followed by an input statement, that the math follows the correct order of operations, and that the while loop has a way to end.
+
+Question: What actions could the developer have taken to minimize the number of errors?
+The developer could have desk-checked the pseudocode with sample values before finishing, which would have caught the wrong average and the missing inputs. They could have used consistent spelling and proofread for typos like "ouput." Testing small sections as they wrote them, instead of all at the end, and having someone else review the code would also have reduced errors. Using parentheses to make the order of operations clear would have prevented the calculation error.
+
+Debugging Exercise (Corrected):
+
+// This pseudocode is intended to determine whether students have
+// passed or failed a course; student needs to average 60 or
+// more on two tests.
+start
+   Declarations
+      num firstTest
+      num secondTest
+      num average
+      num PASSING = 60
+   output "Enter first score or 0 to quit "
+   input firstTest
+   while firstTest <> 0
+      output "Enter second score "
+      input secondTest
+      average = (firstTest + secondTest) / 2
+      output "Average is ", average
+      if average >= PASSING then
+         output "Pass"
+      else
+         output "Fail"
+      endif
+      output "Enter first score or 0 to quit "
+      input firstTest
+   endwhile
+stop
+
+Corrections Made:
+1. Added "input firstTest" after the first prompt so the first score is stored before the loop starts.
+2. Changed "while firstTest not equal to 0" to "while firstTest <> 0" for readability.
+3. Added parentheses to the average calculation: (firstTest + secondTest) / 2. Without them, only secondTest was divided by 2.
+4. Fixed the misspelled "ouput" to "output".
+5. Added "input firstTest" at the end of the loop so the user can enter a new score or 0 to quit. Without it, the loop would never end.
+
+Test: firstTest = 100, secondTest = 80
+Average = (100 + 80) / 2 = 90
+90 >= 60, so the output is "Pass". Entering 0 ends the loop.
